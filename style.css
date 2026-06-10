@@ -1,0 +1,110 @@
+body {
+    font-family: sans-serif;
+    background-color: #eceff5;
+    margin: 0;
+    padding: 20px;
+    color: #292929;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+input, textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+button {
+    padding: 12px;
+    background-color: #1c47a3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #14399c;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.book-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.book-card p {
+    color: #666;
+    margin-top: 0;
+}
+
+/* Modal jako nakładka */   
+.modal {    
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover {
+    color: #000;
+}

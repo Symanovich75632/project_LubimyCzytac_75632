@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Biblioteka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Moja Biblioteka</h1>
+
+        <section class="add-book-section"> 
+            <h2>Dodaj książkę</h2>
+            <form id="addBookForm">
+                <input type="text" id="bookTitle" placeholder="Tytuł książki" required>
+                <input type="text" id="bookAuthor" placeholder="Autor" required>
+                <textarea id="bookDescription" placeholder="Opis książki" required></textarea>
+                <button type="submit">Dodaj do bazy danych</button>
+            </form>
+        </section>
+
+        <section class="books-list-section">
+            <h2>Lista książek</h2>
+            <div id="booksContainer" class="books-grid">
+                </div>
+        </section>
+
+        <div id="bookModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span> // &times; to symbol zamknięcia modala
+                <h2 id="modalTitle">Tytuł</h2>
+                <h4 id="modalAuthor">Autor</h4>
+                <p id="modalDescription">Opis</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script> // + app.js
+</body>
+</html>

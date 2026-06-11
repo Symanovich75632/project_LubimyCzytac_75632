@@ -106,7 +106,7 @@ async function fetchBooks() {
             });
             booksContainer.appendChild(bookCard);
         });
-        
+
     } catch (error) {
         console.error('Błąd podczas pobierania książek:', error);
     }
@@ -134,3 +134,19 @@ window.addEventListener('click', (e) => {
 
 // Pobieranie i wyświetlanie książek natychmiast po załadowaniu strony
 fetchBooks();
+
+//4. FUNKCJA USUWANIA KSIĄŻKI (DELETE)
+async function deleteBook(bookId) {
+    try {
+        const response = await fetch(`https://projectlubimyczytac75632-default-rtdb.europe-west1.firebasedatabase.app/books/${bookId}.json`, {
+            method: 'DELETE'
+        }); 
+        if (response.ok) {
+            fetchBooks(); // Odświeżenie listy książek po usunięciu
+        } else {
+            alert('Błąd podczas usuwania książki z bazy danych.');
+        }   
+    } catch (error) {
+        console.error('Błąd podczas usuwania książki:', error);
+    }
+}   

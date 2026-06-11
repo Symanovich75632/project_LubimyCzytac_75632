@@ -108,3 +108,14 @@ button:hover {
 .close-btn:hover {
     color: #000;
 }
+
+.delete-btn {
+    margin-top: 15px;
+    background-color: #dc2626;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #b91c1c;
+}

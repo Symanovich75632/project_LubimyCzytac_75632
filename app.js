@@ -70,20 +70,43 @@ async function fetchBooks() {
             const bookCard = document.createElement('div');
             bookCard.className = 'book-card';
             
-            // Wstrzykiwanie struktury HTML do karty
-            bookCard.innerHTML = `
-                <h3>${book.title}</h3>
-                <p><strong>Autor:</strong> ${book.author}</p>
-            `;
+            // Wstrzykiwanie struktury z podziałem na treść i przycisk usuwania
+                bookCard.innerHTML = `
+                    <div class="book-card-content">
+                        <h3>${book.title}</h3>
+                        <p><strong>Autor:</strong> ${book.author}</p>
+                    </div>
+                <button class="delete-btn" data-id="${id}">Usuń</button>
+                `;  
 
-            // Dodanie zdarzenia kliknięcia, aby otworzyć okno modalne ze szczegółami
-            bookCard.addEventListener('click', () => {
+            // Kliknięcie w treść otwiera szczegóły
+            bookCard.querySelector('.book-card-content').addEventListener('click', () => {
+
                 showBookDetails(book);
             });
 
+
+             // Obsługa kliknięcia w przycisk "Usuń"                    
+            bookCard.querySelector('.delete-btn').addEventListener('click', async (e) => {
+                e.stopPropagation(); // Zapobiega wywołaniu zdarzenia kliknięcia na karcie
             // Dodanie gotowej karty do kontenera na stronie
+                const bookId = e.target.getAttribute('data-id');
+                try {
+                    const deleteResponse = await fetch(`https://projectlubimyczytac75632-default-rtdb.europe-west1.firebasedatabase.app/books/${bookId}.json`, {
+                        method: 'DELETE'
+                    });
+                    if (deleteResponse.ok) {
+                        fetchBooks(); // Odświeżenie listy książek po usunięciu
+                    } else {
+                        alert('Błąd podczas usuwania książki z bazy danych.');
+                    }   
+                } catch (error) {
+                    console.error('Błąd podczas usuwania książki:', error);
+                }   
+            });
             booksContainer.appendChild(bookCard);
         });
+        
     } catch (error) {
         console.error('Błąd podczas pobierania książek:', error);
     }
